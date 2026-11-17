@@ -19,9 +19,9 @@ DEFAULT_OUTPUT = Path("output/metadata.json")
 def analyze_script(script_text: str):
     """Extracts title, hook, key scenes, and main topics from script."""
     lines = [line.strip() for line in script_text.splitlines() if line.strip()]
-    
+
     # Topic from first header or line
-    main_topic = "Educational Video"
+    main_topic = "Educational Breakdown"
     for line in lines:
         if line.startswith("#"):
             main_topic = line.lstrip("#").strip()
@@ -57,36 +57,36 @@ def create_metadata(script_path: Path = DEFAULT_SCRIPT, output_path: Path = DEFA
     # Clean topic words for tag generation
     clean_words = re.findall(r"\b[A-Za-z]{4,}\b", f"{topic} {hook}".lower())
     keyword_set = list(dict.fromkeys(clean_words))[:8]
+    clean_tag = re.sub(r"[^a-zA-Z0-9]", "", topic).lower()
 
     metadata = {
         "video_topic": topic,
         "title_options": [
-            f"What Happens If You Fall Into a {topic}? (Explained Simply)",
-            f"The Terrifying Reality of {topic}",
-            f"{topic}: Everything You Need to Know in 60 Seconds",
+            f"{topic} (Explained Simply)",
+            f"The Truth About {topic}",
+            f"{topic}: What You Need To Know",
+            f"Why {topic} Matters More Than You Think",
         ],
         "description": (
             f"{hook}\n\n"
-            f"In this video, we break down {topic} step-by-step so you understand "
-            f"how it truly works and why it matters.\n\n"
-            f"🔔 Subscribe for more mind-bending science and educational breakdowns!\n\n"
-            f"#science #education #explained #{re.sub(r'[^a-zA-Z0-9]', '', topic).lower()}"
+            f"In this video, we break down {topic} so you understand "
+            f"how it works and why it matters.\n\n"
+            f"🔔 Subscribe for more quick educational breakdowns!\n\n"
+            f"#shorts #education #explained #{clean_tag}"
         ),
         "tags": [
             topic.lower(),
             f"what is {topic.lower()}",
             f"{topic.lower()} explained",
-            "science documentary",
+            "shorts",
             "educational video",
-            "physics",
-            "faceless youtube",
+            "learn",
             *keyword_set,
         ],
         "thumbnail_concept": {
-            "headline_text": "DON'T LOOK AWAY",
-            "color_scheme": "High-contrast Neon Yellow and Deep Cosmic Black",
-            "composition": f"Extreme visual close-up representing {topic} with dramatic cinematic lighting and glowing energy distortion.",
-            "generation_prompt": f"Dramatic cinematic documentary visual of {topic}, glowing event horizon, ultra-detailed 8k, photorealistic space background, cinematic lighting, vibrant contrast, Unreal Engine 5 render style, 16:9 aspect ratio.",
+            "headline_text": topic.upper()[:24],
+            "composition": f"High-contrast visual representing {topic} with vibrant colors and bold focal point.",
+            "generation_prompt": f"Dramatic cinematic visual representing {topic}, clean modern lighting, high detail, vibrant contrast, 9:16 vertical ratio.",
         },
         "scenes_summary": info["scenes"],
     }

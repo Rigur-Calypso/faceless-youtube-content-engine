@@ -94,8 +94,8 @@ python3 engine.py --voice
 # Render clips only
 python3 engine.py --clips
 
-# Re-render a single scene clip with a custom query
-python3 generate_clips.py --scene 2 --query "nebula explosion"
+# Re-render clips in landscape mode (16:9)
+python3 generate_clips.py --landscape
 
 # Assemble video with custom subtitle font size
 python3 engine.py --assemble --font-size 28

@@ -40,6 +40,24 @@ ENV/
 ehthumbs.db
 Thumbs.db
 
-# Intermediate Render Clips (Generated during assembly)
+# Generated voiceover & subtitles (re-created by engine)
+audio/*.mp3
+audio/*.srt
+audio/*.txt
+!audio/.gitkeep
+
+# Generated intermediate clips (re-created during assembly)
 clips/*.mp4
 !clips/.gitkeep
+
+# Generated final video & metadata (re-created during assembly)
+output/*.mp4
+output/*.json
+!output/.gitkeep
+
+# User visual assets (place your custom images here)
+images/*.jpg
+images/*.jpeg
+images/*.png
+images/*.webp
+!images/.gitkeep

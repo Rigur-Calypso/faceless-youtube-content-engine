@@ -112,8 +112,8 @@ python3 engine.py --status
    [SCENE: Visual concept for scene 2]
    Your core explanation goes here...
    ```
-   ```
-2. Place your corresponding image assets (`frame_01.jpg`, `frame_02.jpg`, etc.) into the `images/` directory.
+
+2. *(Optional)* Place your corresponding image assets (`scene_01.jpg`, `scene_02.jpg`, etc.) into the `images/` directory. If omitted, the engine automatically creates sleek visual cards so you can test right away!
 
 ---
 
